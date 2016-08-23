@@ -1,33 +1,76 @@
 'use strict'
-var tree1  = require('./exercise');
-var tree2 = require('./exercise');
+var tree1  = require('./exercise').tree1;
+var tree2 = require('./exercise').tree2;
 
 /* Write an algorithm to check whether an arbitrary tree is a binary search tree */
 
 let isBinaryTree = (tree) => {
-  let root = tree.key
-  if (tree.left) {
-    if (tree.left.key > root) {
+  let key = tree.key
+  let left = tree.left
+  let right = tree.right
+  if (left) {
+    if (left.key > key) {
       return false
     }
-    if (!isBinaryTree(tree.left)) {
+    if (!isBinaryTree(left)) {
         return false
     }
   }
-  if (tree.right) {
-    if (tree.right.key < root) {
+  if (right) {
+    if (right.key < key) {
       return false
     }
-    if (!isBinaryTree(tree.right)) {
+    if (!isBinaryTree(right)) {
       return false
     }
   }
 return true
 }
+console.log(isBinaryTree(tree1), '<--isBinaryTree(tree1)');
+console.log(isBinaryTree(tree2), '<--isBinaryTree(tree2)');
 
-console.log(isBinaryTree(tree1), '<--tree1');
-console.log(isBinaryTree(tree2), '<--tree2');
+/* Write an algorithm to find the height of a binary search tree */
 
+let height = (tree) => {
+  let left = tree.left
+  let right = tree.right
+  if (left && right) {
+    return Math.max(height(left), height(right)) + 1
+  }
+  if (left) {
+    return height(left) + 1
+  }
+  if (right) {
+    return height(right) + 1
+  }
+  return 1
+}
+console.log(height(tree1), '<--tree1');
+console.log(height(tree2), '<--tree2');
+
+/* Write an algorithm to find the third largest value in a binary search tree */
+let thirdLargest = (tree) => {
+  let right = tree.right
+  if (right) {
+    thirdLargest(right)
+  } 
+  // left node
+  if (!left) {
+
+    if (tree.parent.left) {
+      if (tree.parent.left.right) {
+        
+      }
+      return tree.parent.left
+    }
+    return tree.parent.parent
+  }
+ // parent 
+  else {
+
+  }
+  return 1
+}
 
 function print_tree(tree, depth) {
     if (!depth) {
@@ -44,8 +87,3 @@ function print_tree(tree, depth) {
         print_tree(tree.right, depth);
     }
 }
-
-
-
-/* Write an algorithm to find the height of a binary search tree */
-/* Write an algorithm to find the third largest value in a binary search tree */

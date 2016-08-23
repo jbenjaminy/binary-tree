@@ -122,33 +122,42 @@ tree1.insert(18, 'eighteen')
 var tree2 = {
   key: 10,
   value: 'ten',
-  left:
-   { key: 5,
-     value: 'five',
-     left:
-      { key: 6,
-        value: 'two',
+  left: { 
+    key: 5,
+    value: 'five',
+    left: { 
+      key: 6,
+      value: 'two',
+      left: null,
+      right: null 
+    },
+     right: { 
+      key: 8,
+      value: 'eight',
+      left: null,
+      right: null 
+    } 
+  },
+  right: { 
+    key: 15,
+    value: 'fifteen',
+    left: { 
+      key: 12,
+      value: 'twelve',
+      left: null,
+      right: null 
+    },
+    right: { 
+      key: 18,
+      value: 'eighteen',
+      left: {
+        key: 17,
         left: null,
-        right: null },
-     right:
-      { key: 8,
-        value: 'eight',
-        left: null,
-        right: null } },
-  right:
-   { key: 15,
-     value: 'fifteen',
-     left:
-      { key: 12,
-        value: 'twelve',
-        left: null,
-        right: null },
-     right:
-      { key: 18,
-        value: 'eighteen',
-        left: null,
-        right: null }
-      }
+        right: null
+      },
+      right: null 
+    }
+  }
 }
 
 //           10
