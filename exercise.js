@@ -1,4 +1,6 @@
-let BinarySearchTree = (key, value, parent) => {
+'use strict'
+
+var BinarySearchTree = function(key, value, parent) {
   this.key = key || null
   this.value = value || null
   this.parent = parent || null
@@ -6,7 +8,7 @@ let BinarySearchTree = (key, value, parent) => {
   this.right = null
 };
 
-BinarySearchTree.prototype.insert = (key, value) => {
+BinarySearchTree.prototype.insert = function(key, value) {
   if (this.key === null) {
     this.key = key
     this.value = value
@@ -29,11 +31,11 @@ BinarySearchTree.prototype.insert = (key, value) => {
   }
 }
 
-BinarySearchTree.prototype.get = (key) => {
+BinarySearchTree.prototype.get = function(key) {
   if (this.key === key) {
     return this.value
   }
-  else if (if < this.key && this.left) {
+  else if (key < this.key && this.left) {
     return this.left.get(key)
   }
   else if (key > this.key && this.right) {
@@ -44,7 +46,7 @@ BinarySearchTree.prototype.get = (key) => {
   }
 }
 
-BinarySearchTree.prototype.remove = (key) => {
+BinarySearchTree.prototype.remove = function(key) {
   if (this.key === key) {
     if (this.left && this.right) {
       let successor = this.right._findMin()
@@ -73,7 +75,7 @@ BinarySearchTree.prototype.remove = (key) => {
   }
 }
 
-BinarySearchTree.prototype._replaceWith = (node) => {
+BinarySearchTree.prototype._replaceWith = function(node) {
   if (this.parent) {
     if (this === this.parent.left) {
       this.parent.left = node
@@ -102,9 +104,59 @@ BinarySearchTree.prototype._replaceWith = (node) => {
   }
 }
 
-BinarySearchTree.prototype._findMin = () => {
+BinarySearchTree.prototype._findMin = function() {
   if (!this.left) {
     return this
   }
   return this.left_findMin()
 }
+
+var tree1 = new BinarySearchTree(10, 'ten')
+tree1.insert(5, 'five')
+tree1.insert(15, 'fifteen')
+tree1.insert(2, 'two')
+tree1.insert(8, 'eight')
+tree1.insert(12, 'twelve')
+tree1.insert(18, 'eighteen')
+
+var tree2 = {
+  key: 10,
+  value: 'ten',
+  left:
+   { key: 5,
+     value: 'five',
+     left:
+      { key: 6,
+        value: 'two',
+        left: null,
+        right: null },
+     right:
+      { key: 8,
+        value: 'eight',
+        left: null,
+        right: null } },
+  right:
+   { key: 15,
+     value: 'fifteen',
+     left:
+      { key: 12,
+        value: 'twelve',
+        left: null,
+        right: null },
+     right:
+      { key: 18,
+        value: 'eighteen',
+        left: null,
+        right: null }
+      }
+}
+
+//           10
+//         /    \
+//        5      15
+//       / \    / \
+//      6   8  12  18
+//
+
+exports.tree1 = tree1;
+exports.tree2 = tree2;
