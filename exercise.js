@@ -152,20 +152,36 @@ var tree2 = {
       value: 'eighteen',
       left: {
         key: 17,
-        left: null,
+        left: {
+          key: 16,
+          left: {
+            key: 15,
+            left: null,
+            right: null
+          },
+          right: null
+        },
         right: null
       },
       right: null 
     }
   }
 }
-
+// tree: 1
 //           10
 //         /    \
 //        5      15
 //       / \    / \
 //      6   8  12  18
 //
+// tree: 2
+//           10
+//         /    \
+//        5      15
+//       / \    / \
+//      6   8  12  18
+//                /
+//               17
 
 exports.tree1 = tree1;
 exports.tree2 = tree2;

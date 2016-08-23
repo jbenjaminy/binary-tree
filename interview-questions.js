@@ -26,8 +26,9 @@ let isBinaryTree = (tree) => {
   }
 return true
 }
-console.log(isBinaryTree(tree1), '<--isBinaryTree(tree1)');
-console.log(isBinaryTree(tree2), '<--isBinaryTree(tree2)');
+// console.log(isBinaryTree(tree1), '<--isBinaryTree(tree1)');
+// console.log(isBinaryTree(tree2), '<--isBinaryTree(tree2)');
+
 
 /* Write an algorithm to find the height of a binary search tree */
 
@@ -45,33 +46,35 @@ let height = (tree) => {
   }
   return 1
 }
-console.log(height(tree1), '<--tree1');
-console.log(height(tree2), '<--tree2');
+// console.log(height(tree1), '<--tree1');
+// console.log(height(tree2), '<--tree2');
+
 
 /* Write an algorithm to find the third largest value in a binary search tree */
 let thirdLargest = (tree) => {
   let right = tree.right
+  let left = tree.left
   if (right) {
     thirdLargest(right)
   } 
-  // left node
-  if (!left) {
-
-    if (tree.parent.left) {
-      if (tree.parent.left.right) {
-        
+  // parent
+  if (tree.parent.key) {
+    if (!left || left.key < tree.parent.key) {
+      if (tree.parent.left) {
+        if (tree.parent.left.right) {
+          thirdLargest(tree.parent.left.right)
+        }
+        return tree.parent.left.key
       }
-      return tree.parent.left
-    }
-    return tree.parent.parent
+      return tree.parent.parent.key
+    } 
   }
- // parent 
   else {
-
+    thirdLargest(left)
   }
-  return 1
+  return tree.key
 }
-
+console.log(thirdLargest(tree1), '<-- thirdLargest(tree1)')
 function print_tree(tree, depth) {
     if (!depth) {
         console.log("" + tree.key);
